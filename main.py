@@ -16,8 +16,8 @@ import pandas as pd
 from flask import Flask, request, jsonify
 
 app = Flask(__name__)
-# df = pd.read_csv("main.csv")
-
+df = pd.read_csv("data/main.csv")
+# print(df)
 @app.route('/')
 def home():
     with open("index.html") as f:
@@ -26,7 +26,7 @@ def home():
 
 @app.route('/browse.html')
 def browse():
-    return "This isn't finished dumbass..."
+    return df.to_html()
 
 @app.route('/donate.html')
 def donate():
