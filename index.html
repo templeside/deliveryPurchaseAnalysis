@@ -1,0 +1,49 @@
+<html>
+      <head>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script>
+      function subscribe() {
+        var email = prompt("What is your email?", "????");
+
+        $.post({
+          type: "POST",
+          url: "email",
+          data: email,
+          contentType: "application/text; charset=utf-8",
+          dataType: "json"
+        }).done(function(data) {
+          alert(data);
+        }).fail(function(data) {
+          alert("POST failed");
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>CoupangEats Korean Delivery Data!</h1>
+<!-- Introduction -->
+      <h2><em>Introduction</em></h2>
+      <p>Hello everyone! Welcome to our website.<br /><br /> We hope you guys find what y'all are looking for!</p>
+      <img src="https://play-lh.googleusercontent.com/VVxIA_jSqBzwzRSE9SXItUNLhT62QYdFNvCWT5msNIV_NXGJHi_C3GnyLvL14-niVQ"
+           width= 200
+           height= 200/>
+      <h3>Developers</h3>
+      <ol>
+        <li><a href="https://comicbook.com/anime/news/the-rising-of-the-shield-hero-how-many-episodes-season-2/" target="_blank">Christopher Park</a></li>
+        <li><a href="https://www.dualshockers.com/the-rising-of-the-shield-hero-season-2-release-date-confirmed/" target="_blank">Chanwoong Jhon</a></li>
+      </ol>
+      <h3>Purpose of this Website:</h3>
+      <p></p>
+      <h3>Webpages</h3>
+      <ol>
+          <li><a href="./browse.html" target="_blank">Browse</a></li>
+          <li><a href="./donate.html" target="_blank">Donate</a></li>
+      </ol>
+      <button onclick="subscribe()">Subscribe</button>
+
+      <!-- Commented out
+      <video src="https://content.codecademy.com/courses/freelance-1/unit-1/lesson-2/htmlcss1-vid_brown-bear.mp4" width="320" height="240" controls>Video not supported</video>
+-->
+  </body>
+</html>
+
