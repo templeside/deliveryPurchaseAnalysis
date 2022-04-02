@@ -1,4 +1,2 @@
-asdf@wisc.edu
-fjfjfj@wisc.edu
-aklsdfjaflj@wisc.edu
-cjhon@wisc.edu
+user@example.com
+user123@gmail.com
