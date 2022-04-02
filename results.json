@@ -1,53 +1,20 @@
 {
-  "score": 35.0,
+  "score": 75.0,
   "tests": [
     {
       "test": "has_pages",
-      "points": 7,
-      "possible": 10,
-      "log": [
-        "========================================",
-        "TEST has_pages (10)",
-        "[2022-04-02 00:33:24,990] ERROR in app: Exception on /donate.html [GET]",
-        "Traceback (most recent call last):",
-        "  File \"/home/charles/.local/lib/python3.8/site-packages/flask/app.py\", line 2073, in wsgi_app",
-        "    response = self.full_dispatch_request()",
-        "  File \"/home/charles/.local/lib/python3.8/site-packages/flask/app.py\", line 1518, in full_dispatch_request",
-        "    rv = self.handle_user_exception(e)",
-        "  File \"/home/charles/.local/lib/python3.8/site-packages/flask/app.py\", line 1516, in full_dispatch_request",
-        "    rv = self.dispatch_request()",
-        "  File \"/home/charles/.local/lib/python3.8/site-packages/flask/app.py\", line 1502, in dispatch_request",
-        "    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)",
-        "  File \"/home/charles/s22/p4_deliveryPurchaseAnalysis/main.py\", line 98, in donate",
-        "    if(args['from'] == 'A'):",
-        "KeyError: 'from'",
-        "",
-        "missing page: donate.html",
-        ""
-      ]
+      "points": 10,
+      "possible": 10
     },
     {
       "test": "has_links",
-      "points": 0,
-      "possible": 6,
-      "log": [
-        "========================================",
-        "TEST has_links (6)",
-        "no hyperlink to browse.html found on home page",
-        "no hyperlink to donate.html found on home page",
-        ""
-      ]
+      "points": 6,
+      "possible": 6
     },
     {
       "test": "browse",
-      "points": 14,
-      "possible": 20,
-      "log": [
-        "========================================",
-        "TEST browse (20)",
-        "found 29,400 but expected 29400 at row 0 of column total amount",
-        ""
-      ]
+      "points": 20,
+      "possible": 20
     },
     {
       "test": "email",
@@ -56,18 +23,8 @@
     },
     {
       "test": "ab_test",
-      "points": 0,
-      "possible": 25,
-      "log": [
-        "========================================",
-        "TEST ab_test (25)",
-        "could not visit ./donate.html?from=B",
-        "could not visit ./donate.html?from=A",
-        "could not visit ./donate.html?from=B",
-        "could not visit ./donate.html?from=A",
-        "could not visit ./donate.html?from=B",
-        ""
-      ]
+      "points": 25,
+      "possible": 25
     },
     {
       "test": "rate_test",
@@ -79,7 +36,7 @@
         "Traceback (most recent call last):",
         "  File \"tester.py\", line 127, in run_all_tests",
         "    points = t.fn()",
-        "  File \"tester.py\", line 513, in rate_test",
+        "  File \"tester.py\", line 514, in rate_test",
         "    assert status == \"200 OK\"",
         "AssertionError",
         "",
@@ -110,5 +67,5 @@
   ],
   "lint": [],
   "date": "04/02/2022",
-  "latency": 4.495593309402466
+  "latency": 4.481882810592651
 }

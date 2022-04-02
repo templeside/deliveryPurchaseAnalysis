@@ -6,7 +6,6 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 from selenium import webdriver
 
-
 options = Options()
 options.headless = True
 service = Service(executable_path="chromium.chromedriver")
@@ -17,7 +16,9 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 df = pd.read_csv("main.csv")
-
+# df = pd.read_csv("main.csv",thousands=',')
+# df['total amount'] = df['total amount'].astype(int)
+# df['net return'] = df['net return'].astype(int)
 
 clickCounter = {
     "count": 0,
@@ -43,26 +44,27 @@ def home():
     if(clickCounter["count"]<=10):
         if(clickCounter["count"]%2 ==0):
             # do something with A style - red
-            html = html.replace('<a href="./donate.html" target="_blank">Donate</a>',
-                                '<a href="./donate.html?from=A" target="_blank" style="color:red;"><b>Donate</b></a>' )
+            
+            html = html.replace('<a href="donate.html" target="_blank">Donate</a>',
+                                '<a href="donate.html?from=A" target="_blank" style="color:red;"><b>Donate</b></a>' )
             clickCounter['styleA'] +=1
         else:
             # do something with B style - blue
-            html = html.replace('<a href="./donate.html" target="_blank">Donate</a>',
-                                '<a href="./donate.html?from=B" target="_blank" style="color:blue;"><b>Donate</b></a>' )
+            html = html.replace('<a href="donate.html" target="_blank">Donate</a>',
+                                '<a href="donate.html?from=B" target="_blank" style="color:blue;"><b>Donate</b></a>' )
             clickCounter['styleB'] +=1
     #after 10 counts
     else:
         if(clickCounter['CtrA']>= clickCounter['CtrB']):
 #             # do something with A style
-            html = html.replace('<a href="./donate.html" target="_blank">Donate</a>',
-                                '<a href="./donate.html?from=A" target="_blank" style="color:red;"><b>Donate</b></a>' )
+            html = html.replace('<a href="donate.html" target="_blank">Donate</a>',
+                                '<a href="donate.html?from=A" target="_blank" style="color:red;"><b>Donate</b></a>' )
             clickCounter['styleA'] +=1
 
         else:
 #             # do something with B style
-            html = html.replace('<a href="./donate.html" target="_blank">Donate</a>',
-                                '<a href="./donate.html?from=B" target="_blank" style="color:blue;"><b>Donate</b></a>' )
+            html = html.replace('<a href="donate.html" target="_blank">Donate</a>',
+                                '<a href="donate.html?from=B" target="_blank" style="color:blue;"><b>Donate</b></a>' )
             clickCounter['styleB'] +=1
 
     
@@ -91,14 +93,10 @@ def donate():
         html = f.read()
         
     args = dict(request.args)
-#     print(args['from'])
-#     print(type(args['from']))
-#     print(clickCounter['styleA'])
-#     print(clickCounter['styleB'])
-    if(args['from'] == 'A'):
+    if('from' in args and args['from'] == 'A'):
         clickCounter['clickedA'] +=1
         clickCounter['CtrA'] = clickCounter['clickedA']/ clickCounter['styleA']
-    elif(args['from'] == 'B'):
+    elif('from' in args and args['from'] == 'B'):
         clickCounter['clickedB'] +=1
         clickCounter['CtrB'] = clickCounter['clickedB']/ clickCounter['styleB']
     
